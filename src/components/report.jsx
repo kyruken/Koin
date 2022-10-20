@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Report() {
     return (
-        <div className="report-container">
+        <div className="report-container margin-left">
             <h2>Market Report</h2>
-            <div className="row-1-2">
+            <div className="column-1-2">
                 <button>All currencies</button>
                 <button>Favorites</button>
                 {/* Maybe we do gainers and losers */}
@@ -12,7 +12,7 @@ export default function Report() {
                 <button>Losers</button>
             </div>
 
-            <div>
+            <div className="column-2-2">
                 <select name="currency" id="currency">
                     <option value="usd">USD</option>
                     <option value="rupee">Rupee</option>

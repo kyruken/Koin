@@ -65,6 +65,10 @@ Now the img moves relatively on the div itself I believe.
   margin-right: 3%;
 }
 
+.margin-left {
+  margin-left: 3%;
+}
+
 .margin-top {
   margin-top: 3%;
 }
@@ -72,6 +76,17 @@ Now the img moves relatively on the div itself I believe.
 .links {
   display: flex;
   gap: 1rem;
+}
+
+/* Report Container */
+
+.report-container {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  width: 60%;
+  height: 800px;
+
+
 }
 
 
