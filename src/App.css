@@ -1,7 +1,28 @@
-:root {
+/* Resets */
+
+input {
+  border: 0;
 }
 
 h1 {
   font-size: 2.5rem;
+}
+
+/* Navbar styles */
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 25%;
+  border-bottom: 1px solid #CBCBCB;
+}
+
+.navbar input[type='text'] {
+  box-shadow: 0 3px 5px 0 rgb(9, 9, 9, 0.8);
+  border-radius: 10px;
+  width: 15rem;
+  height: 1.5rem;
+
 }
 
