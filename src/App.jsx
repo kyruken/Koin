@@ -1,12 +1,14 @@
 import React from 'react'
 import './App.css'
 
+import Navbar from './components/navbar.jsx';
+
 function App() {
   return (
     <div className="App">
-      <h1>Coinchange</h1>
+      <Navbar />
     </div>
   )
 }
 
-export default App
+export default App;
