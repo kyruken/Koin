@@ -52,4 +52,26 @@ Now the img moves relatively on the div itself I believe.
 }
 
 
+/* Footer styles */
+
+.footer {
+  border-top: 1px solid #CBCBCB;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.margin-right {
+  margin-right: 3%;
+}
+
+.margin-top {
+  margin-top: 3%;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
 
