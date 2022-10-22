@@ -4,8 +4,20 @@ input {
   border: 0;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Resets */
+
+/* Global styling */
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
+}
+
+h2 {
+  font-size: 2.3rem;
 }
 
 /* Navbar styles */
@@ -16,18 +28,31 @@ h1 {
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 50%;
-  border-bottom: 1px solid #CBCBCB;
+  padding: 1rem 0;
 }
 
-.navbar input[type='text'] {
+/* Change this styling to the logo later on */
+.navbar h1 {
+  margin-left: 5%;
+}
+
+/* Header styles */
+
+.header {
+  background-color: #4392F1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4.5rem 0;
+}
+
+input[type='text'] {
   box-shadow: 0 3px 5px 0 rgb(9, 9, 9, 0.8);
-  border-radius: 8px;
-  width: 13rem;
-  height: 1.8rem;
+  border-radius: 20px;
+  width: 20rem;
+  height: 2.5rem;
   padding: 0 1rem;
 
 }
