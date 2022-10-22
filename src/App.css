@@ -76,6 +76,18 @@ Now the img moves relatively on the div itself I believe.
 
 }
 
+/* Report Container */
+
+.report-container {
+  height: 800px;
+  padding: 3rem 5rem;
+}
+
+.report-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* Footer styles */
 
@@ -102,20 +114,4 @@ Now the img moves relatively on the div itself I believe.
   display: flex;
   gap: 1rem;
 }
-
-/* Report Container */
-
-.report-container {
-  background-color: #FFFFFF;
-  border-radius: 15px;
-  width: 60%;
-  height: 800px;
-  padding: 0 15px;
-}
-
-.report-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
 

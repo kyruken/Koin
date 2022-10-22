@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from './grid.jsx';
 export default function Report() {
     return (
-        <div className="report-container margin-left">
+        <div className="report-container">
             <h2>Market Report</h2>
 
             <div className="report-buttons">
