@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Grid from './grid.jsx';
 export default function Report() {
     return (
         <div className="report-container margin-left">
@@ -27,6 +28,8 @@ export default function Report() {
                     </select>
                 </div>
             </div>
+
+            <Grid />
 
         </div>
     )

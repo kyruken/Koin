@@ -11,8 +11,8 @@ function App() {
       <Navbar />
       <Report />
 
-
       <Footer />
+      
     </div>
   )
 }
