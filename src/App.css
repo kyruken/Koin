@@ -85,8 +85,13 @@ Now the img moves relatively on the div itself I believe.
   border-radius: 15px;
   width: 60%;
   height: 800px;
+  padding: 0 15px;
 
+}
 
+.report-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 
