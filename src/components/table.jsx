@@ -28,6 +28,7 @@ export default function theTable() {
     //coinCount to 20 to account for the next coins to come in
     const [coinCount, setCoinCount] = React.useState(10);
 
+    const [activePage, setActivePage] = React.useState("allCoins");
     function getPrevCoins() {
         setCoinCount(coinCount => coinCount - 10);
         if (coinCount <= 10) {
@@ -112,6 +113,10 @@ export default function theTable() {
             return newCoins;
         })
     }
+
+    function getActivePage(coin) {
+        activePage === "allCoins" ? setActivePage("singleCoin") : setActivePage("allCoins");
+    }
     
     React.useEffect(() => {
         //for now, we will pretend that we will be fetching from an API 
@@ -140,7 +145,7 @@ export default function theTable() {
             </TableCell>
             <TableCell sx={{border: 0}}>{row.id}</TableCell>
             <TableCell component="th" scope="row"  sx={{border: 0}}>
-            <button className='coin-name-container'>
+            <button className='coin-name-container' onClick={() => getActivePage(row)}>
                 <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
                 <h3>{row.name}</h3>
                 <p>{row.symbol}</p>
@@ -154,26 +159,35 @@ export default function theTable() {
 
     return (
         <div className="table-container">
-            <h2>Market Report</h2>
-            <button onClick={getFavorites}>Favorites</button>
-            <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell></TableCell>
-                        <TableCell>#</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Price</TableCell>
-                        <TableCell>Supply</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {coinElements}
-                </TableBody>
-            </Table>
-            </TableContainer>
-            <button onClick={getPrevCoins}>Previous</button>
-            <button onClick={getNextCoins}>Next</button>
+            {activePage === "allCoins" 
+            && 
+                <div>
+                    <h2>Market Report</h2>
+                    <button onClick={getFavorites}>Favorites</button>
+                    <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell></TableCell>
+                                <TableCell>#</TableCell>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Price</TableCell>
+                                <TableCell>Supply</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {coinElements}
+                        </TableBody>
+                    </Table>
+                    </TableContainer>
+                    <button onClick={getPrevCoins}>Previous</button>
+                    <button onClick={getNextCoins}>Next</button>
+            </div>
+            }
+            {activePage === "singleCoin" 
+            &&
+                <div>Swag</div>
+            }
 
         </div>
     )
