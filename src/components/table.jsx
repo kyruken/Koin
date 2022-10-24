@@ -1,5 +1,6 @@
 import React from 'react';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+
+import Star from './star.jsx';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,8 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(isFavorite, count, name, icon, symbol, price, supply) {
-    return {isFavorite, count, name, icon, symbol, price, supply};
+function createData(isFavorite, id, name, icon, symbol, price, supply) {
+    return {isFavorite, id, name, icon, symbol, price, supply};
   }
 
   //we use getCoins function to only get the first 10 coins to display on the page
@@ -58,6 +59,22 @@ export default function theTable() {
         setCoins(coinArray);
       }
 
+    function handleClick(id) {
+        setCoins(prevCoins => {
+            let newCoins = prevCoins.map(coin => {
+                if(coin.id === id) {
+                    let newCoin = {...coin, isFavorite: !coin.isFavorite};
+                    return newCoin;
+
+                } 
+                else {
+                    return coin;
+                }
+            })
+
+            return newCoins;
+        })
+    }
     
     React.useEffect(() => {
         //for now, we will pretend that we will be fetching from an API 
@@ -75,25 +92,29 @@ export default function theTable() {
 
     const coinElements = coins.map((row) => (
         <TableRow
-        key={row.count}
+        key={row.id}
         sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
         >
-        <TableCell sx={{border: 0}}><StarBorderIcon></StarBorderIcon></TableCell>
-        <TableCell sx={{border: 0}}>{row.count}</TableCell>
-        <TableCell component="th" scope="row"  sx={{border: 0}}>
-        <div className='coin-name-container'>
-            <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
-            <h3>{row.name}</h3>
-            <p>{row.symbol}</p>
-        </div>
-        </TableCell>
-        <TableCell sx={{border: 0}}>{row.price}</TableCell>
-        <TableCell sx={{border: 0}}>{row.supply}</TableCell>
+            <TableCell sx={{border: 0}}>
+                <Star 
+                isFavorite={row.isFavorite}
+                toggleFavorite={() => handleClick(row.id)}
+                />
+            </TableCell>
+            <TableCell sx={{border: 0}}>{row.id}</TableCell>
+            <TableCell component="th" scope="row"  sx={{border: 0}}>
+            <div className='coin-name-container'>
+                <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
+                <h3>{row.name}</h3>
+                <p>{row.symbol}</p>
+            </div>
+            </TableCell>
+            <TableCell sx={{border: 0}}>{row.price}</TableCell>
+            <TableCell sx={{border: 0}}>{row.supply}</TableCell>
 
         </TableRow>
     ))
 
-    console.log(coins);
     return (
         <div>
             <TableContainer component={Paper}>
