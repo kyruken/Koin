@@ -153,7 +153,8 @@ export default function theTable() {
     ))
 
     return (
-        <div>
+        <div className="table-container">
+            <h2>Market Report</h2>
             <button onClick={getFavorites}>Favorites</button>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
