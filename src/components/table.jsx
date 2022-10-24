@@ -14,6 +14,8 @@ function createData(isFavorite, id, name, icon, symbol, price, supply) {
     return {isFavorite, id, name, icon, symbol, price, supply};
   }
 
+let favoriteToggle = false;
+
   //we use getCoins function to only get the first 10 coins to display on the page
 
 export default function theTable() {
@@ -58,6 +60,26 @@ export default function theTable() {
         }
         setCoins(coinArray);
       }
+
+    function getFavorites() {
+        let counter = 0;
+        favoriteToggle = !favoriteToggle;
+        console.log(favoriteToggle);
+        if (favoriteToggle === true) {
+            let prevArray = coins;
+            const favoriteCoins = allCoins.filter(coin => {
+                
+                if (coin.isFavorite === true && counter < 10) {
+                    counter++;
+                    return coin;
+                }
+            });
+            setCoins(favoriteCoins);
+        } else {
+            setCoins(allCoins.slice(0, 10));
+        }
+
+    }
 
     function handleClick(id) {
         setCoins(prevCoins => {
@@ -132,6 +154,7 @@ export default function theTable() {
 
     return (
         <div>
+            <button onClick={getFavorites}>Favorites</button>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
