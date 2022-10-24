@@ -140,11 +140,11 @@ export default function theTable() {
             </TableCell>
             <TableCell sx={{border: 0}}>{row.id}</TableCell>
             <TableCell component="th" scope="row"  sx={{border: 0}}>
-            <div className='coin-name-container'>
+            <button className='coin-name-container'>
                 <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
                 <h3>{row.name}</h3>
                 <p>{row.symbol}</p>
-            </div>
+            </button>
             </TableCell>
             <TableCell sx={{border: 0}}>{row.price}</TableCell>
             <TableCell sx={{border: 0}}>{row.supply}</TableCell>
