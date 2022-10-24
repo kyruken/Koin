@@ -74,6 +74,21 @@ export default function theTable() {
 
             return newCoins;
         })
+
+        setAllCoins(prevCoins => {
+            let newCoins = prevCoins.map(coin => {
+                if(coin.id === id) {
+                    let newCoin = {...coin, isFavorite: !coin.isFavorite};
+                    return newCoin;
+
+                } 
+                else {
+                    return coin;
+                }
+            })
+
+            return newCoins;
+        })
     }
     
     React.useEffect(() => {
