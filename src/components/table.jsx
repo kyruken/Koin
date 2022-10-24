@@ -17,18 +17,23 @@ function createData(isFavorite, count, name, icon, symbol, price, supply) {
 
 export default function theTable() {
 
-    //we will have a state, coins, to determine the 10 coins that display on the page
+    //we will have a state, coins, to store the 10 coins that display on the page
     //we will have a second state called allCoins, to hold our API called coin data
+    //lastly, 3rd state will be the coin count that displays on the page
     const [coins, setCoins] = React.useState([]);
     const [allCoins, setAllCoins] = React.useState([]);
+    //coinCount to 20 to account for the next coins to come in
+    const [coinCount, setCoinCount] = React.useState(20);
 
-    function getCoins(nextCoins) {
+    function getNextCoins() {
         const coinArray = [];
-        
-        for (let x = coinArray.length; x < nextCoins; x++) {
-            coinArray[x] = allCoins[x];
+
+        for (let x = 0, y = coinCount-10; x < 10; x++) {
+            coinArray[x] = allCoins[y];
+            y++
         }
-        setCoins(coinArray);
+        setCoinCount(coinCount => coinCount + 10);
+        setCoins(prevCoins => prevCoins = coinArray);
       }
 
     
@@ -36,7 +41,7 @@ export default function theTable() {
         //for now, we will pretend that we will be fetching from an API 
         const rows = [];
         const firstCoins = [];
-        for (let x = 0; x < 20; x++) {
+        for (let x = 0; x < 50; x++) {
             rows.push(createData(false, x+1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
             if (x < 10) {
                 firstCoins.push(createData(false, x+1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
@@ -66,9 +71,9 @@ export default function theTable() {
         </TableRow>
     ))
 
+    console.log(coins);
     return (
         <div>
-            <button onClick={getCoins}>Swag</button>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -85,6 +90,8 @@ export default function theTable() {
                 </TableBody>
             </Table>
             </TableContainer>
+            <button>Previous</button>
+            <button onClick={getNextCoins}>Next</button>
 
         </div>
     )
