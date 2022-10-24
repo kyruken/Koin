@@ -9,13 +9,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function createData(count, name, price, supply) {
-    return {count, name, price, supply};
+function createData(count, name, icon, symbol, price, supply) {
+    return {count, name, icon, symbol, price, supply};
   }
   const rows = [];
   
   for (let x = 1; x < 6; x++) {
-    rows.push(createData(x, 'Bitcoin', '$13,370', '19,000'));
+    rows.push(createData(x, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
 
   }
 
@@ -44,7 +44,11 @@ export default function Grid() {
                     <TableCell sx={{border: 0}}><StarBorderIcon></StarBorderIcon></TableCell>
                     <TableCell sx={{border: 0}}>{row.count}</TableCell>
                     <TableCell component="th" scope="row"  sx={{border: 0}}>
-                    {row.name}
+                    <div className='coin-name-container'>
+                        <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
+                        <h3>{row.name}</h3>
+                        <p>{row.symbol}</p>
+                    </div>
                     </TableCell>
                     <TableCell sx={{border: 0}}>{row.price}</TableCell>
                     <TableCell sx={{border: 0}}>{row.supply}</TableCell>

@@ -88,6 +88,16 @@ Now the img moves relatively on the div itself I believe.
   justify-content: space-between;
 }
 
+/* Table styles */
+.coin-name-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.coin-name-container p {
+  color: grey;
+}
 
 /* Footer styles */
 
