@@ -23,17 +23,39 @@ export default function theTable() {
     const [coins, setCoins] = React.useState([]);
     const [allCoins, setAllCoins] = React.useState([]);
     //coinCount to 20 to account for the next coins to come in
-    const [coinCount, setCoinCount] = React.useState(20);
+    const [coinCount, setCoinCount] = React.useState(10);
 
-    function getNextCoins() {
+    function getPrevCoins() {
+        setCoinCount(coinCount => coinCount - 10);
+        if (coinCount <= 10) {
+            setCoinCount(coinCount => coinCount+10);
+            return;
+        }
         const coinArray = [];
 
-        for (let x = 0, y = coinCount-10; x < 10; x++) {
+        //if coinCount is at 20 and we want to go backwards, we start coinCount back at 0 to get 
+        //0-10 coins
+        for (let x = 0, y = coinCount-20; x < 10; x++) {
             coinArray[x] = allCoins[y];
-            y++
+            y++;
         }
+
+        setCoins(coinArray);
+      }
+
+    function getNextCoins() {
         setCoinCount(coinCount => coinCount + 10);
-        setCoins(prevCoins => prevCoins = coinArray);
+        if (coinCount >= 50) {
+            setCoinCount(coinCount => coinCount-10);
+            return;
+        }
+        const coinArray = [];
+
+        for (let x = 0, y = coinCount; x < 10; x++) {
+            coinArray[x] = allCoins[y];
+            y++;
+        }
+        setCoins(coinArray);
       }
 
     
@@ -90,7 +112,7 @@ export default function theTable() {
                 </TableBody>
             </Table>
             </TableContainer>
-            <button>Previous</button>
+            <button onClick={getPrevCoins}>Previous</button>
             <button onClick={getNextCoins}>Next</button>
 
         </div>
