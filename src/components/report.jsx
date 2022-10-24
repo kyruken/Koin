@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Grid from './grid.jsx';
+import Table from './table.jsx';
 export default function Report() {
     return (
         <div className="report-container">
@@ -29,7 +29,7 @@ export default function Report() {
                 </div>
             </div>
 
-            <Grid />
+            <Table />
 
         </div>
     )
