@@ -81,6 +81,24 @@ Now the img moves relatively on the div itself I believe.
 
 }
 
+/* Menu Styles */
+
+.menu {
+  position: absolute;
+  top: 36%;
+  background-color: #fff;
+  color:#4392F1;
+  padding: 3rem 1.5em;
+  width: 18rem;
+  height: 15rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* Report Container */
 
 .table-container {

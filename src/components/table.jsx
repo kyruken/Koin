@@ -19,15 +19,14 @@ let coinComponent = <Coin
 />;
 
 export default function theTable(props) {
-    const [coins, setCoins] = React.useState([]);
+    const [coins, setCoins] = React.useState(props.allCoins.slice(0, 10));
     const [activePage, setActivePage] = React.useState("allCoins");
     const [coinCount, setCoinCount] = React.useState(10);
     
-    console.log(coins);
     React.useEffect(() => {
-        setCoins(props.allCoins);
+        setCoins(props.allCoins.slice(coinCount-10, coinCount));
 
-    })
+    }, [coinCount])
 
     function getPrevCoins() {
         setCoinCount(coinCount => coinCount - 10);
@@ -40,7 +39,7 @@ export default function theTable(props) {
         //if coinCount is at 20 and we want to go backwards, we start coinCount back at 0 to get 
         //0-10 coins
         for (let x = 0, y = coinCount - 20; x < 10; x++) {
-            coinArray[x] = allCoins[y];
+            coinArray[x] = props.allCoins[y];
             y++;
         }
 
@@ -56,7 +55,7 @@ export default function theTable(props) {
         const coinArray = [];
 
         for (let x = 0, y = coinCount; x < 10; x++) {
-            coinArray[x] = allCoins[y];
+            coinArray[x] = props.allCoins[y];
             y++;
         }
         setCoins(coinArray);
@@ -74,6 +73,39 @@ export default function theTable(props) {
             supply={coin.supply}
         />
     }
+
+    function handleClick(id) {
+        setCoins(prevCoins => {
+            let newCoins = prevCoins.map(coin => {
+                if (coin.id === id) {
+                    let newCoin = { ...coin, isFavorite: !coin.isFavorite };
+                    return newCoin;
+
+                }
+                else {
+                    return coin;
+                }
+            })
+
+            return newCoins;
+        })
+
+        setAllCoins(prevCoins => {
+            let newCoins = prevCoins.map(coin => {
+                if (coin.id === id) {
+                    let newCoin = { ...coin, isFavorite: !coin.isFavorite };
+                    return newCoin;
+
+                }
+                else {
+                    return coin;
+                }
+            })
+
+            return newCoins;
+        })
+    }
+
 
     const coinElements = coins.map((row) => (
         <TableRow
