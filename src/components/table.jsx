@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Star from './star.jsx';
+import Coin from './coin.jsx';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,6 +16,10 @@ function createData(isFavorite, id, name, icon, symbol, price, supply) {
   }
 
 let favoriteToggle = false;
+let coinComponent = <Coin 
+  name="Heemcoin"
+  id="69"
+/>;
 
   //we use getCoins function to only get the first 10 coins to display on the page
 
@@ -27,8 +32,8 @@ export default function theTable() {
     const [allCoins, setAllCoins] = React.useState([]);
     //coinCount to 20 to account for the next coins to come in
     const [coinCount, setCoinCount] = React.useState(10);
-
     const [activePage, setActivePage] = React.useState("allCoins");
+
     function getPrevCoins() {
         setCoinCount(coinCount => coinCount - 10);
         if (coinCount <= 10) {
@@ -116,8 +121,16 @@ export default function theTable() {
 
     function getActivePage(coin) {
         activePage === "allCoins" ? setActivePage("singleCoin") : setActivePage("allCoins");
+        coinComponent = <Coin 
+        isFavorite={coin.isFavorite}
+        id={coin.id}
+        name={coin.name}
+        icon={coin.icon}
+        symbol={coin.symbol}
+        price={coin.price}
+        supply={coin.supply}
+    />
     }
-    
     React.useEffect(() => {
         //for now, we will pretend that we will be fetching from an API 
         const rows = [];
@@ -186,7 +199,11 @@ export default function theTable() {
             }
             {activePage === "singleCoin" 
             &&
-                <div>Swag</div>
+                <div>
+                    <button onClick={() => getActivePage('')}>Back</button>
+                    {coinComponent}
+                    
+                </div>
             }
 
         </div>
