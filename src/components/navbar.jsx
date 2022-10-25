@@ -8,7 +8,7 @@ export default function Navbar() {
             <div className="navbar-links margin-right">
                 <a>Alternatives</a>
                 <a>About Us</a>
-            </div>    
+            </div>
         </div>
     )
 }

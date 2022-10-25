@@ -12,16 +12,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 function createData(isFavorite, id, name, icon, symbol, price, supply) {
-    return {isFavorite, id, name, icon, symbol, price, supply};
-  }
+    return { isFavorite, id, name, icon, symbol, price, supply };
+}
 
 let favoriteToggle = false;
-let coinComponent = <Coin 
-  name="Heemcoin"
-  id="69"
+let coinComponent = <Coin
+    name="Heemcoin"
+    id="69"
 />;
 
-  //we use getCoins function to only get the first 10 coins to display on the page
+//we use getCoins function to only get the first 10 coins to display on the page
 
 export default function theTable() {
 
@@ -37,25 +37,25 @@ export default function theTable() {
     function getPrevCoins() {
         setCoinCount(coinCount => coinCount - 10);
         if (coinCount <= 10) {
-            setCoinCount(coinCount => coinCount+10);
+            setCoinCount(coinCount => coinCount + 10);
             return;
         }
         const coinArray = [];
 
         //if coinCount is at 20 and we want to go backwards, we start coinCount back at 0 to get 
         //0-10 coins
-        for (let x = 0, y = coinCount-20; x < 10; x++) {
+        for (let x = 0, y = coinCount - 20; x < 10; x++) {
             coinArray[x] = allCoins[y];
             y++;
         }
 
         setCoins(coinArray);
-      }
+    }
 
     function getNextCoins() {
         setCoinCount(coinCount => coinCount + 10);
         if (coinCount >= 50) {
-            setCoinCount(coinCount => coinCount-10);
+            setCoinCount(coinCount => coinCount - 10);
             return;
         }
         const coinArray = [];
@@ -65,7 +65,7 @@ export default function theTable() {
             y++;
         }
         setCoins(coinArray);
-      }
+    }
 
     function getFavorites() {
         let counter = 0;
@@ -74,7 +74,7 @@ export default function theTable() {
         if (favoriteToggle === true) {
             let prevArray = coins;
             const favoriteCoins = allCoins.filter(coin => {
-                
+
                 if (coin.isFavorite === true && counter < 10) {
                     counter++;
                     return coin;
@@ -90,11 +90,11 @@ export default function theTable() {
     function handleClick(id) {
         setCoins(prevCoins => {
             let newCoins = prevCoins.map(coin => {
-                if(coin.id === id) {
-                    let newCoin = {...coin, isFavorite: !coin.isFavorite};
+                if (coin.id === id) {
+                    let newCoin = { ...coin, isFavorite: !coin.isFavorite };
                     return newCoin;
 
-                } 
+                }
                 else {
                     return coin;
                 }
@@ -105,11 +105,11 @@ export default function theTable() {
 
         setAllCoins(prevCoins => {
             let newCoins = prevCoins.map(coin => {
-                if(coin.id === id) {
-                    let newCoin = {...coin, isFavorite: !coin.isFavorite};
+                if (coin.id === id) {
+                    let newCoin = { ...coin, isFavorite: !coin.isFavorite };
                     return newCoin;
 
-                } 
+                }
                 else {
                     return coin;
                 }
@@ -121,24 +121,24 @@ export default function theTable() {
 
     function getActivePage(coin) {
         activePage === "allCoins" ? setActivePage("singleCoin") : setActivePage("allCoins");
-        coinComponent = <Coin 
-        isFavorite={coin.isFavorite}
-        id={coin.id}
-        name={coin.name}
-        icon={coin.icon}
-        symbol={coin.symbol}
-        price={coin.price}
-        supply={coin.supply}
-    />
+        coinComponent = <Coin
+            isFavorite={coin.isFavorite}
+            id={coin.id}
+            name={coin.name}
+            icon={coin.icon}
+            symbol={coin.symbol}
+            price={coin.price}
+            supply={coin.supply}
+        />
     }
     React.useEffect(() => {
         //for now, we will pretend that we will be fetching from an API 
         const rows = [];
         const firstCoins = [];
         for (let x = 0; x < 50; x++) {
-            rows.push(createData(false, x+1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
+            rows.push(createData(false, x + 1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
             if (x < 10) {
-                firstCoins.push(createData(false, x+1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
+                firstCoins.push(createData(false, x + 1, 'Bitcoin', 'https://assets.coinlayer.com/icons/611.png', 'BTC', '$13,370', '19,000'));
             }
         }
         setAllCoins(rows);
@@ -147,62 +147,62 @@ export default function theTable() {
 
     const coinElements = coins.map((row) => (
         <TableRow
-        key={row.id}
-        sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+            key={row.id}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-            <TableCell sx={{border: 0}}>
-                <Star 
-                isFavorite={row.isFavorite}
-                toggleFavorite={() => handleClick(row.id)}
+            <TableCell sx={{ border: 0 }}>
+                <Star
+                    isFavorite={row.isFavorite}
+                    toggleFavorite={() => handleClick(row.id)}
                 />
             </TableCell>
-            <TableCell sx={{border: 0}}>{row.id}</TableCell>
-            <TableCell component="th" scope="row"  sx={{border: 0}}>
-            <button className='coin-name-container' onClick={() => getActivePage(row)}>
-                <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
-                <h3>{row.name}</h3>
-                <p>{row.symbol}</p>
-            </button>
+            <TableCell sx={{ border: 0 }}>{row.id}</TableCell>
+            <TableCell component="th" scope="row" sx={{ border: 0 }}>
+                <button className='coin-name-container' onClick={() => getActivePage(row)}>
+                    <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
+                    <h3>{row.name}</h3>
+                    <p>{row.symbol}</p>
+                </button>
             </TableCell>
-            <TableCell sx={{border: 0}}>{row.price}</TableCell>
-            <TableCell sx={{border: 0}}>{row.supply}</TableCell>
+            <TableCell sx={{ border: 0 }}>{row.price}</TableCell>
+            <TableCell sx={{ border: 0 }}>{row.supply}</TableCell>
 
         </TableRow>
     ))
 
     return (
         <div className="table-container">
-            {activePage === "allCoins" 
-            && 
+            {activePage === "allCoins"
+                &&
                 <div>
                     <h2>Market Report</h2>
                     <button onClick={getFavorites}>Favorites</button>
                     <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell></TableCell>
-                                <TableCell>#</TableCell>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Price</TableCell>
-                                <TableCell>Supply</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {coinElements}
-                        </TableBody>
-                    </Table>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell></TableCell>
+                                    <TableCell>#</TableCell>
+                                    <TableCell>Name</TableCell>
+                                    <TableCell>Price</TableCell>
+                                    <TableCell>Supply</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {coinElements}
+                            </TableBody>
+                        </Table>
                     </TableContainer>
                     <button onClick={getPrevCoins}>Previous</button>
                     <button onClick={getNextCoins}>Next</button>
-            </div>
+                </div>
             }
-            {activePage === "singleCoin" 
-            &&
+            {activePage === "singleCoin"
+                &&
                 <div>
                     <button onClick={() => getActivePage('')}>Back</button>
                     {coinComponent}
-                    
+
                 </div>
             }
 
