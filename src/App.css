@@ -28,12 +28,17 @@ h2 {
 }
 
 .navbar {
-  padding: 1rem 0;
+  display: flex;
+  background-color: #4392F1;
+  padding: 0.5rem 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Change this styling to the logo later on */
-.navbar h1 {
-  margin-left: 5%;
+.navbar-links {
+  color: #fff;
+  display: flex;
+  gap: 1.5rem;
 }
 
 /* Header styles */
@@ -45,7 +50,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 4.5rem 0;
+  padding-bottom: 2rem;
 }
 
 input[type='text'] {
