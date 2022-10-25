@@ -15,15 +15,10 @@ function createData(isFavorite, id, name, icon, symbol, price, supply) {
 let favoriteToggle = false;
 
 function App() {
-     //we will have a state, coins, to store the 10 coins that display on the page
-    //we will have a second state called allCoins, to hold our API called coin data
-    //lastly, 3rd state will be the coin count that displays on the page
     const [allCoins, setAllCoins] = React.useState([]);
-
     function getFavorites() {
         let counter = 0;
         favoriteToggle = !favoriteToggle;
-        console.log(favoriteToggle);
         if (favoriteToggle === true) {
             let prevArray = coins;
             const favoriteCoins = allCoins.filter(coin => {
@@ -74,10 +69,54 @@ function App() {
 
     React.useEffect(() => {
         //for now, we will pretend that we will be fetching from an API 
-        setAllCoins(data.crypto);
-        // fetch('http://api.coinlayer.com/list=f510e7f246205c00ad43dcb1f94bb00c')
+        // setAllCoins(data.crypto);
+        Promise.all([
+          fetch('http://api.coinlayer.com/list?access_key=f510e7f246205c00ad43dcb1f94bb00c').then(res => res.json()),
+          fetch('http://api.coinlayer.com/api/live?access_key=f510e7f246205c00ad43dcb1f94bb00c').then(res => res.json()),
+        ]).then(data => setAllCoins(() => {
+          const coinArray = [];
+          let counter = 0;
+          for (const coin in data[0].crypto) {
+            if (Object.hasOwn(data[0].crypto, coin)) {
+              coinArray.push(data[0].crypto[coin]);
+            }
+          }
+
+          for (let x = 0; x < coinArray.length; x++) {
+            coinArray[x].isFavorite = false;
+            coinArray[x].id = x;
+            coinArray[x].price = 0;
+          }
+
+          for (const price in data[1].rates) {
+            if (Object.hasOwn(data[1].rates, price)) {
+              
+              coinArray[counter].price = data[1].rates[price];  
+            }
+            counter++;
+            
+          }
+          return coinArray;
+        }));   
+        // .then(data => setAllCoins(() => {
+        //   const coinArray = [];
+
+              
+        // fetch('http://api.coinlayer.com/list?access_key=f510e7f246205c00ad43dcb1f94bb00c')
         //   .then(res => res.json())
-        //   .then(data => setAllCoins(data))
+        //   .then(data => setAllCoins(() => {
+        //     const coinArray = [];
+        //     for (const coin in data.crypto) {
+        //       if (Object.hasOwn(data.crypto, coin)) {
+        //         coinArray.push(data.crypto[coin]);
+        //       }
+        //     }
+        //     for (let x = 0; x < coinArray.length; x++) {
+        //       coinArray[x].isFavorite = false;
+        //       coinArray[x].id = x;
+        //     }
+        //     return coinArray;
+        //   }));
     }, [])
 
   return (
@@ -86,7 +125,7 @@ function App() {
       <Header />
       <Table
         allCoins={allCoins}
-      />
+        />
 
       <Footer />
       

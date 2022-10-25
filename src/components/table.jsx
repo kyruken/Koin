@@ -19,15 +19,15 @@ let coinComponent = <Coin
 />;
 
 export default function theTable(props) {
-    const [coins, setCoins] = React.useState(props.allCoins);
+    const [coins, setCoins] = React.useState([]);
     const [activePage, setActivePage] = React.useState("allCoins");
     const [coinCount, setCoinCount] = React.useState(10);
-
-    React.useEffect(() => {
-
-    }, [])
-
+    
     console.log(coins);
+    React.useEffect(() => {
+        setCoins(props.allCoins);
+
+    })
 
     function getPrevCoins() {
         setCoinCount(coinCount => coinCount - 10);
@@ -75,33 +75,34 @@ export default function theTable(props) {
         />
     }
 
-    // const coinElements = coins.map((row) => (
-    //     <TableRow
-    //         key={row.id}
-    //         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-    //     >
-    //         <TableCell sx={{ border: 0 }}>
-    //             <Star
-    //                 isFavorite={row.isFavorite}
-    //                 toggleFavorite={() => handleClick(row.id)}
-    //             />
-    //         </TableCell>
-    //         <TableCell sx={{ border: 0 }}>{row.id}</TableCell>
-    //         <TableCell component="th" scope="row" sx={{ border: 0 }}>
-    //             <button className='coin-name-container' onClick={() => getActivePage(row)}>
-    //                 <img src='https://assets.coinlayer.com/icons/611.png' width="30"></img>
-    //                 <h3>{row.name}</h3>
-    //                 <p>{row.symbol}</p>
-    //             </button>
-    //         </TableCell>
-    //         <TableCell sx={{ border: 0 }}>{row.price}</TableCell>
-    //         <TableCell sx={{ border: 0 }}>{row.supply}</TableCell>
+    const coinElements = coins.map((row) => (
+        <TableRow
+            key={row.id}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+        >
+            <TableCell sx={{ border: 0 }}>
+                <Star
+                    isFavorite={row.isFavorite}
+                    toggleFavorite={() => handleClick(row.id)}
+                />
+            </TableCell>
+            <TableCell sx={{ border: 0 }}>{row.id}</TableCell>
+            <TableCell component="th" scope="row" sx={{ border: 0 }}>
+                <button className='coin-name-container' onClick={() => getActivePage(row)}>
+                    <img src={row.icon_url} width="30"></img>
+                    <h3>{row.name}</h3>
+                    <p>{row.symbol}</p>
+                </button>
+            </TableCell>
+            <TableCell sx={{ border: 0 }}>{row.price}</TableCell>
+            <TableCell sx={{ border: 0 }}>{row.supply}</TableCell>
 
-    //     </TableRow>
-    // ))
+        </TableRow>
+    ))
 
     return (
         <div className="table-container">
+            <button onClick={() => console.log(coins)}>Does it work</button>
             {activePage === "allCoins"
                 &&
                 <div>
@@ -119,7 +120,7 @@ export default function theTable(props) {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {/* {coinElements} */}
+                                {coinElements}
                             </TableBody>
                         </Table>
                     </TableContainer>
