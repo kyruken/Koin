@@ -8,37 +8,8 @@ import Footer from './components/footer.jsx';
 
 import data from './data.js';
 
-function createData(isFavorite, id, name, icon, symbol, price, supply) {
-  return { isFavorite, id, name, icon, symbol, price, supply };
-}
-
-let favoriteToggle = false;
-
 function App() {
-    const [allCoins, setAllCoins] = React.useState([]);
-    function getFavorites() {
-        let counter = 0;
-        favoriteToggle = !favoriteToggle;
-        if (favoriteToggle === true) {
-            let prevArray = coins;
-            const favoriteCoins = allCoins.filter(coin => {
 
-                if (coin.isFavorite === true && counter < 10) {
-                    counter++;
-                    return coin;
-                }
-            });
-            setCoins(favoriteCoins);
-        } else {
-            setCoins(allCoins.slice(0, 10));
-        }
-
-    }
-
-
-    React.useEffect(() => {
-      setAllCoins(data);
-    })
     // React.useEffect(() => {
     //     //for now, we will pretend that we will be fetching from an API 
     //     // setAllCoins(data.crypto);
@@ -75,12 +46,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Header 
-        allCoins={allCoins}
-      />
-      <Table
-        allCoins={allCoins}
-        />
+      <Header />
+      <Table />
 
       <Footer />
       
