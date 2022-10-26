@@ -16,7 +16,7 @@ import data from '../data.js';
 let favoriteToggle = false;
 let coinComponent;
 
-export default function theTable(props) {
+export default function theTable() {
     const [coins, setCoins] = React.useState([]);
     const [allCoins, setAllCoins] = React.useState([]);
     const [activePage, setActivePage] = React.useState("allCoins");
