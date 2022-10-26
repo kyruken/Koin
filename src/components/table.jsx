@@ -11,13 +11,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-//we use getCoins function to only get the first 10 coins to display on the page
-
-let coinComponent = <Coin
-    name="Heemcoin"
-    id="69"
-/>;
-
 export default function theTable(props) {
     const [coins, setCoins] = React.useState(props.allCoins.slice(0, 10));
     const [activePage, setActivePage] = React.useState("allCoins");
@@ -36,8 +29,6 @@ export default function theTable(props) {
         }
         const coinArray = [];
 
-        //if coinCount is at 20 and we want to go backwards, we start coinCount back at 0 to get 
-        //0-10 coins
         for (let x = 0, y = coinCount - 20; x < 10; x++) {
             coinArray[x] = props.allCoins[y];
             y++;
