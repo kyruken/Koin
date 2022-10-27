@@ -5,6 +5,7 @@ import Navbar from './components/navbar.jsx';
 import Footer from './components/footer.jsx';
 
 import AboutUs from './components/aboutus.jsx';
+import Alternatives from './components/alternatives.jsx';
 import Coinpage from './components/coinpage.jsx';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Coinpage />} />
           <Route path='/aboutus' element={<AboutUs />} />
+          <Route path='/alternatives' element={<Alternatives />} />
           {/* <Coinpage /> */}
         </Routes>
         <Footer />

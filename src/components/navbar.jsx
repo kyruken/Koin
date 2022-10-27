@@ -7,7 +7,7 @@ export default function Navbar() {
             <Link to='/'><img src="../src/assets/koinlogo.png" width="125" className="margin-left"></img></Link>
 
             <div className="navbar-links margin-right">
-                <a>Alternatives</a>
+                <Link to='/alternatives'>Alternatives</Link>
                 <Link to='/aboutus'>About Us</Link>
             </div>
         </div>
