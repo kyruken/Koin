@@ -27,8 +27,8 @@ export default function theTable() {
         // setAllCoins(data);
         // setCoins(data.slice(0,10));
         Promise.all([
-          fetch('http://api.coinlayer.com/list?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
-          fetch('http://api.coinlayer.com/api/live?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
+          fetch('https://kyruken.github.io/data/data1.json').then(res => res.json()),
+          fetch('https://kyruken.github.io/data/ratedata.json').then(res => res.json()),
         ]).then(data => setAllCoins(() => {
           const coinArray = [];
           let counter = 0;
