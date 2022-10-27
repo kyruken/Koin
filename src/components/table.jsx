@@ -27,8 +27,8 @@ export default function theTable() {
         // setAllCoins(data);
         // setCoins(data.slice(0,10));
         Promise.all([
-          fetch('http://api.coinlayer.com/list?access_key=e1f502ee8ff24808d2669766b28a3dd7').then(res => res.json()),
-          fetch('http://api.coinlayer.com/api/live?access_key=e1f502ee8ff24808d2669766b28a3dd7').then(res => res.json()),
+          fetch('http://api.coinlayer.com/list?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
+          fetch('http://api.coinlayer.com/api/live?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
         ]).then(data => setAllCoins(() => {
           const coinArray = [];
           let counter = 0;
