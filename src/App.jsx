@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route exact path='/' element={<Coinpage />} />
+          <Route exact path='/Koin' element={<Coinpage />} />
           <Route path='/aboutus' element={<AboutUs />} />
           <Route path='/alternatives' element={<Alternatives />} />
           {/* <Coinpage /> */}
