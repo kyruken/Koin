@@ -113,7 +113,7 @@ export default function theTable() {
             isFavorite={coin.isFavorite}
             id={coin.id}
             name={coin.name}
-            icon={coin.icon}
+            icon_url={coin.icon_url}
             symbol={coin.symbol}
             price={coin.price}
             supply={coin.max_supply}
