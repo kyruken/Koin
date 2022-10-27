@@ -164,11 +164,11 @@ export default function theTable() {
             </TableCell>
             <TableCell sx={{ border: 0 }}>{row.id}</TableCell>
             <TableCell component="th" scope="row" sx={{ border: 0 }}>
-                <button className='coin-name-container' onClick={() => getActivePage(row)}>
+                <div className='coin-name-container' onClick={() => getActivePage(row)}>
                     <img src={row.icon_url} width="30"></img>
                     <h3>{row.name}</h3>
                     <p>{row.symbol}</p>
-                </button>
+                </div>
             </TableCell>
             <TableCell sx={{ border: 0 }}>{row.price}</TableCell>
             <TableCell sx={{ border: 0 }}>{row.max_supply}</TableCell>

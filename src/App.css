@@ -172,9 +172,16 @@ Now the img moves relatively on the div itself I believe.
 }
 
 .coin-name-container {
-  display: flex;
+  cursor: pointer;
+  display: inline-flex;
   align-items: start;
   gap: 1rem;
+
+}
+
+.coin-name-container:hover {
+  background-color:rgb(206, 198, 198);
+
 }
 
 .coin-container p, .similar-coin p {
