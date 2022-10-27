@@ -26,35 +26,35 @@ export default function theTable() {
         //for now, we will pretend that we will be fetching from an API 
         // setAllCoins(data);
         // setCoins(data.slice(0,10));
-        // Promise.all([
-        //   fetch('http://api.coinlayer.com/list?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
-        //   fetch('http://api.coinlayer.com/api/live?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
-        // ]).then(data => setAllCoins(() => {
-        //   const coinArray = [];
-        //   let counter = 0;
-        //   for (const coin in data[0].crypto) {
-        //     if (Object.hasOwn(data[0].crypto, coin)) {
-        //       coinArray.push(data[0].crypto[coin]);
-        //     }
-        //   }
+        Promise.all([
+          fetch('http://api.coinlayer.com/list?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
+          fetch('http://api.coinlayer.com/api/live?access_key=6726e7a5b1a8460697e9217fad5d0a6b').then(res => res.json()),
+        ]).then(data => setAllCoins(() => {
+          const coinArray = [];
+          let counter = 0;
+          for (const coin in data[0].crypto) {
+            if (Object.hasOwn(data[0].crypto, coin)) {
+              coinArray.push(data[0].crypto[coin]);
+            }
+          }
 
-        //   for (let x = 0; x < coinArray.length; x++) {
-        //     coinArray[x].isFavorite = false;
-        //     coinArray[x].id = x;
-        //     coinArray[x].price = 0;
-        //   }
+          for (let x = 0; x < coinArray.length; x++) {
+            coinArray[x].isFavorite = false;
+            coinArray[x].id = x;
+            coinArray[x].price = 0;
+          }
 
-        //   for (const price in data[1].rates) {
-        //     if (Object.hasOwn(data[1].rates, price)) {
+          for (const price in data[1].rates) {
+            if (Object.hasOwn(data[1].rates, price)) {
               
-        //       coinArray[counter].price = data[1].rates[price];  
-        //     }
-        //     counter++;
+              coinArray[counter].price = data[1].rates[price];  
+            }
+            counter++;
             
-        //   }
-        //   setCoins(coinArray.slice(0,10));
-        //   return coinArray;
-        // }));
+          }
+          setCoins(coinArray.slice(0,10));
+          return coinArray;
+        }));
 
     }, [])
     function getPrevCoins() {
