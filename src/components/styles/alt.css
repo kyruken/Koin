@@ -1,0 +1,24 @@
+
+.alternatives-container {
+    margin: 0 5%;
+}
+
+.alternatives-container h1, .alternatives-container h2 {
+    margin: 1rem 0;
+}
+
+.websites {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 10px;
+}
+
+.box1 {
+    grid: 1 / 1 / 3 / 3;
+}
+
+.alternatives-container h3 {
+    margin-bottom: 1rem;
+}

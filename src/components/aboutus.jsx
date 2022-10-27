@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './component.css';
+import './styles/aboutus.css';
 
 export default function AboutUs() {
     return (
-        <div>
+        <div className="aboutus-container">
             <h1>About Us</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, reprehenderit provident temporibus
                 magni deserunt perferendis quibusdam tempora cumque repudiandae rerum aliquam officia iusto cum

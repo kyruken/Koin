@@ -1,0 +1,50 @@
+
+.aboutus-container {
+    margin: 0 5%;
+}
+
+.aboutus-container h1, .aboutus-container h2 {
+    margin: 1rem 0;
+}
+
+.aboutus-container p {
+    margin-bottom: 2rem;
+}
+
+.aboutus-container label {
+    font-weight: bold;
+}
+
+.aboutus-container input, .aboutus-container textarea {
+    display: block;
+}
+
+.aboutus-container input[type="email"], .aboutus-container input[type="text"] {
+    border: 1px solid black;
+    width: 40%;
+    height: 2rem;
+}
+
+.aboutus-container input[type="email"], .aboutus-container input[type="text"], .aboutus-container textarea {
+    min-width: 300px;
+    margin: 1rem 0;
+}
+
+.aboutus-container textarea {
+    width: 80%;
+    resize: none;
+}
+
+input[type="submit"] {
+    padding: 0.3rem 2rem;
+    border: 0;
+
+    background-color: aqua; /*change*/
+
+    border-radius: 50px;
+    box-shadow: 0 3px gray;
+}
+
+.red {
+    color: red;
+}

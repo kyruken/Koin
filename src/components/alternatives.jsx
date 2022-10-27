@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './styles/alt.css';
+
 export default function Alternatives() {
     return (
-        <div>
+        <div className="alternatives-container">
             <h1>Alternatives</h1>
             <p>Enjoying the Koin platform? Are you interested in the world of
                 cryptocurrency and want more information? Check some of these
