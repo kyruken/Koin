@@ -178,7 +178,6 @@ export default function theTable() {
 
     return (
         <div className="table-container">
-            <button onClick={() => setCoinCount(20)}>Does it work</button>
             {activePage === "allCoins"
                 &&
                 <div>
